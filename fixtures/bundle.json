@@ -1,0 +1,43 @@
+{
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "total": 2,
+  "link": [
+    {
+      "relation": "next",
+      "url": "/fhir?page=2&token=scope-a"
+    }
+  ],
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:p1",
+      "search": {
+        "mode": "match"
+      },
+      "resource": {
+        "resourceType": "Patient",
+        "id": "p1",
+        "meta": {
+          "versionId": "2"
+        },
+        "managingOrganization": {
+          "reference": "Organization/o1/_history/1"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:o1",
+      "search": {
+        "mode": "include"
+      },
+      "resource": {
+        "resourceType": "Organization",
+        "id": "o1",
+        "meta": {
+          "versionId": "1"
+        },
+        "name": "合成服务点"
+      }
+    }
+  ]
+}

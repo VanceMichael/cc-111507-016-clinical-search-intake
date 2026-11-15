@@ -1,0 +1,46 @@
+[
+  {
+    "id": "standard",
+    "entry": "bundle.json",
+    "version": "source-v1",
+    "resources": [
+      "bundle.json",
+      "page2.json"
+    ],
+    "behavior": "standard",
+    "description": "匿名协作服务目录：standard"
+  },
+  {
+    "id": "expired-next",
+    "entry": "bundle.json",
+    "version": "source-v1",
+    "resources": [
+      "bundle.json",
+      "page2.json"
+    ],
+    "behavior": "expired-next",
+    "description": "匿名协作服务目录：expired-next"
+  },
+  {
+    "id": "partial-outcome",
+    "entry": "bundle.json",
+    "version": "source-v1",
+    "resources": [
+      "bundle.json",
+      "page2.json"
+    ],
+    "behavior": "partial-outcome",
+    "description": "匿名协作服务目录：partial-outcome"
+  },
+  {
+    "id": "looping-next",
+    "entry": "bundle.json",
+    "version": "source-v1",
+    "resources": [
+      "bundle.json",
+      "page2.json"
+    ],
+    "behavior": "looping-next",
+    "description": "匿名协作服务目录：looping-next"
+  }
+]

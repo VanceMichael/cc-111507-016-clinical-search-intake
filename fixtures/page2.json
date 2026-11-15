@@ -1,0 +1,46 @@
+{
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "entry": [
+    {
+      "search": {
+        "mode": "match"
+      },
+      "resource": {
+        "resourceType": "Patient",
+        "id": "p2",
+        "meta": {
+          "versionId": "1"
+        }
+      }
+    },
+    {
+      "search": {
+        "mode": "outcome"
+      },
+      "resource": {
+        "resourceType": "OperationOutcome",
+        "issue": [
+          {
+            "severity": "warning",
+            "code": "incomplete",
+            "diagnostics": "来源保留未决结果"
+          }
+        ]
+      }
+    },
+    {
+      "search": {
+        "mode": "include"
+      },
+      "resource": {
+        "resourceType": "Organization",
+        "id": "o1",
+        "meta": {
+          "versionId": "1"
+        },
+        "name": "合成服务点"
+      }
+    }
+  ]
+}
