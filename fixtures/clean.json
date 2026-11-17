@@ -1,0 +1,34 @@
+{
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "total": 1,
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:p7",
+      "search": {
+        "mode": "match"
+      },
+      "resource": {
+        "resourceType": "Patient",
+        "id": "p7",
+        "meta": {
+          "versionId": "1"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:o1",
+      "search": {
+        "mode": "include"
+      },
+      "resource": {
+        "resourceType": "Organization",
+        "id": "o1",
+        "meta": {
+          "versionId": "1"
+        },
+        "name": "合成服务点"
+      }
+    }
+  ]
+}

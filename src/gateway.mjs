@@ -50,9 +50,20 @@ export async function createGateway(scenario = 'standard') {
       if (url.pathname === '/trace') return send(trace.slice(0, -1));
       if (url.pathname.startsWith('/files/')) return file(decodeURIComponent(url.pathname.slice(7)));
       if (url.pathname === '/fhir') {
+        const pages = spec.pages || [spec.entry, 'page2.json'];
+        if (scenario === 'not-a-bundle') return send({ resourceType: 'Patient', id: 'outside' });
         if (query.page === '2' && scenario === 'expired-next') return send({ resourceType: 'OperationOutcome', issue: [{ severity: 'error', code: 'expired' }] }, 410);
-        const bundle = JSON.parse(await readFile(new URL(query.page === '2' ? 'page2.json' : 'bundle.json', fixtures), 'utf8'));
-        if (scenario === 'looping-next') bundle.link = [{ relation: 'next', url: '/fhir?page=1&token=scope-a' }];
+        const pageName = query.page === '2' ? pages[1] : pages[0];
+        const bundle = JSON.parse(await readFile(new URL(pageName, fixtures), 'utf8'));
+        const nextUrl = (target) => `/fhir?${target}&token=scope-a`;
+        if (scenario === 'looping-next') bundle.link = [{ relation: 'next', url: '/fhir?page=1' }];
+        if (scenario === 'cyclic-next') bundle.link = [{ relation: 'next', url: query.page === '2' ? '/fhir?page=1' : nextUrl('page=2') }];
+        if (scenario === 'unsafe-next') bundle.link = [{ relation: 'next', url: 'https://example.invalid/fhir?page=2' }];
+        if (scenario === 'duplicate-page') {
+          bundle.link = [{ relation: 'next', url: nextUrl('page=2') }];
+          if (query.page === '2') return send(JSON.parse(await readFile(new URL(pages[0], fixtures), 'utf8')));
+        }
+
         return send(bundle);
       }
       send({ error: '来源接口不存在' }, 404);

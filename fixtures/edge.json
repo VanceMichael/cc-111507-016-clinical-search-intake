@@ -1,0 +1,74 @@
+{
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "total": 2,
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:p1",
+      "search": {
+        "mode": "match"
+      },
+      "resource": {
+        "resourceType": "Patient",
+        "id": "p1",
+        "meta": {
+          "versionId": "2"
+        },
+        "managingOrganization": {
+          "reference": "Organization/o1"
+        },
+        "generalPractitioner": [
+          {
+            "reference": "Organization/o9/_history/7"
+          }
+        ],
+        "extension": [
+          {
+            "url": "urn:example:unsupported",
+            "valueString": "保留原文"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:p3",
+      "search": {
+        "mode": "match"
+      },
+      "resource": {
+        "resourceType": "Patient",
+        "id": "p3",
+        "meta": {
+          "versionId": "1"
+        },
+        "managingOrganization": {
+          "reference": "urn:uuid:p1"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:o1",
+      "search": {
+        "mode": "include"
+      },
+      "resource": {
+        "resourceType": "Organization",
+        "id": "o1",
+        "meta": {
+          "versionId": "1"
+        },
+        "name": "合成服务点"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:p4",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "p4",
+        "meta": {
+          "versionId": "1"
+        }
+      }
+    }
+  ]
+}

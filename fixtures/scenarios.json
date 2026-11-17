@@ -42,5 +42,88 @@
     ],
     "behavior": "looping-next",
     "description": "匿名协作服务目录：looping-next"
+  },
+  {
+    "id": "cyclic-next",
+    "entry": "bundle.json",
+    "version": "source-v1",
+    "resources": [
+      "bundle.json",
+      "page2.json"
+    ],
+    "behavior": "cyclic-next",
+    "description": "匿名协作服务目录：next 链接在两页之间往返"
+  },
+  {
+    "id": "unsafe-next",
+    "entry": "bundle.json",
+    "version": "source-v1",
+    "resources": [
+      "bundle.json",
+      "page2.json"
+    ],
+    "behavior": "unsafe-next",
+    "description": "匿名协作服务目录：next 链接指向来源之外"
+  },
+  {
+    "id": "duplicate-page",
+    "entry": "bundle.json",
+    "version": "source-v1",
+    "resources": [
+      "bundle.json",
+      "page2.json"
+    ],
+    "behavior": "duplicate-page",
+    "description": "匿名协作服务目录：第二页重复第一页内容"
+  },
+  {
+    "id": "edge-references",
+    "entry": "edge.json",
+    "version": "source-v1",
+    "resources": [
+      "edge.json",
+      "page2.json"
+    ],
+    "behavior": "edge-references",
+    "description": "匿名协作服务目录：版本化/无版本/fullUrl 别名引用与未知 mode"
+  },
+  {
+    "id": "clean",
+    "entry": "clean.json",
+    "version": "source-v1",
+    "resources": [
+      "clean.json"
+    ],
+    "pages": [
+      "clean.json"
+    ],
+    "behavior": "clean",
+    "description": "匿名协作服务目录：单页、无告警，可形成完整收件"
+  },
+  {
+    "id": "not-a-bundle",
+    "entry": "bundle.json",
+    "version": "source-v1",
+    "resources": [
+      "bundle.json",
+      "page2.json"
+    ],
+    "behavior": "not-a-bundle",
+    "description": "匿名协作服务目录：检索入口不是 Bundle"
+  },
+  {
+    "id": "cross-page-references",
+    "entry": "references-page1.json",
+    "version": "source-v1",
+    "resources": [
+      "references-page1.json",
+      "references-page2.json"
+    ],
+    "pages": [
+      "references-page1.json",
+      "references-page2.json"
+    ],
+    "behavior": "cross-page-references",
+    "description": "匿名协作服务目录：跨页附带资源与版本化/无版本引用"
   }
 ]

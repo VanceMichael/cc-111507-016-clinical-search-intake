@@ -1,0 +1,47 @@
+{
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "total": 1,
+  "entry": [
+    {
+      "search": {
+        "mode": "include"
+      },
+      "resource": {
+        "resourceType": "Organization",
+        "id": "o1",
+        "meta": {
+          "versionId": "1"
+        },
+        "name": "合成服务点旧版"
+      }
+    },
+    {
+      "search": {
+        "mode": "include"
+      },
+      "resource": {
+        "resourceType": "Organization",
+        "id": "o1",
+        "meta": {
+          "versionId": "2"
+        },
+        "name": "合成服务点新版"
+      }
+    },
+    {
+      "search": {
+        "mode": "include"
+      },
+      "resource": {
+        "resourceType": "Organization",
+        "id": "o2",
+        "meta": {
+          "versionId": "1"
+        },
+        "name": "合成服务点二"
+      },
+      "fullUrl": "urn:uuid:o2"
+    }
+  ]
+}
