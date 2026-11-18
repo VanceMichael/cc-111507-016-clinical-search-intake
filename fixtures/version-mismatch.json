@@ -1,0 +1,35 @@
+{
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "total": 1,
+  "entry": [
+    {
+      "search": {
+        "mode": "match"
+      },
+      "resource": {
+        "resourceType": "Patient",
+        "id": "p1",
+        "meta": {
+          "versionId": "2"
+        },
+        "managingOrganization": {
+          "reference": "Organization/o1/_history/2"
+        }
+      }
+    },
+    {
+      "search": {
+        "mode": "include"
+      },
+      "resource": {
+        "resourceType": "Organization",
+        "id": "o1",
+        "meta": {
+          "versionId": "1"
+        },
+        "name": "合成服务点甲"
+      }
+    }
+  ]
+}

@@ -50,9 +50,31 @@ export async function createGateway(scenario = 'standard') {
       if (url.pathname === '/trace') return send(trace.slice(0, -1));
       if (url.pathname.startsWith('/files/')) return file(decodeURIComponent(url.pathname.slice(7)));
       if (url.pathname === '/fhir') {
-        if (query.page === '2' && scenario === 'expired-next') return send({ resourceType: 'OperationOutcome', issue: [{ severity: 'error', code: 'expired' }] }, 410);
-        const bundle = JSON.parse(await readFile(new URL(query.page === '2' ? 'page2.json' : 'bundle.json', fixtures), 'utf8'));
+        if (scenario === 'source-unavailable') return send({ error: '来源暂不可用' }, 503);
+        if (query.page === '2' && scenario === 'expired-next') return send({ resourceType: 'OperationOutcome', issue: [{ severity: 'error', code: 'expired', diagnostics: '分页令牌已失效' }] }, 410);
+        const pages = {
+          standard: { 1: 'bundle.json', 2: 'page2.json' },
+          'partial-outcome': { 1: 'bundle.json', 2: 'page2.json' },
+          clean: { 1: 'clean-page1.json', 2: 'clean-page2.json' },
+          'expired-next': { 1: 'bundle.json' },
+          'looping-next': { 1: 'bundle.json' },
+          'version-mismatch': { 1: 'version-mismatch.json' },
+          'ambiguous-versions': { 1: 'ambiguous-versions.json' },
+          'unknown-mode': { 1: 'unknown-mode.json' },
+          'outside-next': { 1: 'outside-next.json' },
+          'truncated-page': { 1: 'bundle.json', 2: 'page2.json' },
+        }[scenario] || { 1: 'bundle.json', 2: 'page2.json' };
+        const name = pages[query.page === '2' ? 2 : 1];
+        if (!name) return send({ resourceType: 'OperationOutcome', issue: [{ severity: 'error', code: 'not-found', diagnostics: '分页不存在' }] }, 404);
+        response.setHeader('ETag', `"${spec.version}-p${query.page === '2' ? 2 : 1}"`);
+        const raw = await readFile(new URL(name, fixtures), 'utf8');
+        const bundle = JSON.parse(raw);
         if (scenario === 'looping-next') bundle.link = [{ relation: 'next', url: '/fhir?page=1&token=scope-a' }];
+        if (scenario === 'truncated-page' && query.page === '2') {
+          response.setHeader('Content-Length', Buffer.byteLength(raw));
+          response.setHeader('Connection', 'close');
+          return response.end(raw.slice(0, Math.floor(raw.length / 2)));
+        }
         return send(bundle);
       }
       send({ error: '来源接口不存在' }, 404);

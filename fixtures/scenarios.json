@@ -11,6 +11,17 @@
     "description": "匿名协作服务目录：standard"
   },
   {
+    "id": "clean",
+    "entry": "clean-page1.json",
+    "version": "source-v1",
+    "resources": [
+      "clean-page1.json",
+      "clean-page2.json"
+    ],
+    "behavior": "clean",
+    "description": "匿名协作服务目录：clean"
+  },
+  {
     "id": "expired-next",
     "entry": "bundle.json",
     "version": "source-v1",
@@ -42,5 +53,66 @@
     ],
     "behavior": "looping-next",
     "description": "匿名协作服务目录：looping-next"
+  },
+  {
+    "id": "version-mismatch",
+    "entry": "version-mismatch.json",
+    "version": "source-v1",
+    "resources": [
+      "version-mismatch.json"
+    ],
+    "behavior": "version-mismatch",
+    "description": "匿名协作服务目录：version-mismatch"
+  },
+  {
+    "id": "ambiguous-versions",
+    "entry": "ambiguous-versions.json",
+    "version": "source-v1",
+    "resources": [
+      "ambiguous-versions.json"
+    ],
+    "behavior": "ambiguous-versions",
+    "description": "匿名协作服务目录：ambiguous-versions"
+  },
+  {
+    "id": "unknown-mode",
+    "entry": "unknown-mode.json",
+    "version": "source-v1",
+    "resources": [
+      "unknown-mode.json"
+    ],
+    "behavior": "unknown-mode",
+    "description": "匿名协作服务目录：unknown-mode"
+  },
+  {
+    "id": "outside-next",
+    "entry": "outside-next.json",
+    "version": "source-v1",
+    "resources": [
+      "outside-next.json"
+    ],
+    "behavior": "outside-next",
+    "description": "匿名协作服务目录：outside-next"
+  },
+  {
+    "id": "truncated-page",
+    "entry": "bundle.json",
+    "version": "source-v1",
+    "resources": [
+      "bundle.json",
+      "page2.json"
+    ],
+    "behavior": "truncated-page",
+    "description": "匿名协作服务目录：truncated-page"
+  },
+  {
+    "id": "source-unavailable",
+    "entry": "bundle.json",
+    "version": "source-v1",
+    "resources": [
+      "bundle.json"
+    ],
+    "behavior": "source-unavailable",
+    "description": "匿名协作服务目录：source-unavailable"
   }
 ]

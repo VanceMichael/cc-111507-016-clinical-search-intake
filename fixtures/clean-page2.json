@@ -1,0 +1,37 @@
+{
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "entry": [
+    {
+      "search": {
+        "mode": "match"
+      },
+      "resource": {
+        "resourceType": "Patient",
+        "id": "p2",
+        "meta": {
+          "versionId": "1"
+        },
+        "generalPractitioner": [
+          {
+            "reference": "urn:uuid:o2"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:o2",
+      "search": {
+        "mode": "include"
+      },
+      "resource": {
+        "resourceType": "Organization",
+        "id": "o2",
+        "meta": {
+          "versionId": "1"
+        },
+        "name": "合成服务点乙"
+      }
+    }
+  ]
+}
